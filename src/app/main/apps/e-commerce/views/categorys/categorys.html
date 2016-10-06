@@ -1,0 +1,104 @@
+<div id="e-commerce-products" class="page-layout carded fullwidth" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center" layout="column" flex>
+
+        <!-- CONTENT HEADER -->
+        <div class="header" layout="row" layout-align="space-between center">
+            <div class="white-fg" layout="column" layout-align="start start">
+                <div class="h1" layout="row" layout-align="start center">
+                    <md-icon md-font-icon="icon-cube-outline"></md-icon>
+                    <span>Categorys</span>
+                </div>
+                <div class="product-count secondary-text">
+                    <span>Total Categorys:</span>
+                    <span>{{vm.colors.length}}</span>
+                </div>
+            </div>
+
+            <div class="search" layout="row" layout-align="start center" flex>
+                <md-icon md-font-icon="icon-magnify" class="white-text icon search-icon"></md-icon>
+                <input id="e-commerce-products-search" class="search-input" type="text" placeholder="Search"
+                       translate translate-attr-placeholder="EC.SEARCH" flex>
+            </div>
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+
+            <!-- CONTENT TOOLBAR -->
+
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            <div class="content fullpage-datatable" layout="column" flex>
+
+                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                       dt-options="vm.dtOptions">
+                    <thead>
+                        <tr>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">ID</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Category PT</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Category EN</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Category ES</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Lock</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Actions</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="aux in ::vm.colors">
+                            <td ng-style="(aux.duplicated === 1 || aux.content_changed === 1 || aux.section_group_name_en === null || aux.section_group_name_es === null || aux.section_group_name_pt === null || aux.section_group_name_en === '' || aux.section_group_name_es === '' || aux.section_group_name_pt === '')  && {'color':'red'}">{{aux.section_group_id}}</td>
+                            <td ng-style="(aux.duplicated === 1 || aux.content_changed === 1 || aux.section_group_name_en === null || aux.section_group_name_es === null || aux.section_group_name_pt === null || aux.section_group_name_en === '' || aux.section_group_name_es === '' || aux.section_group_name_pt === '')  && {'color':'red'}">{{aux.section_group_name_pt}}</td>
+                            <td ng-style="(aux.duplicated === 1 || aux.content_changed === 1 || aux.section_group_name_en === null || aux.section_group_name_es === null || aux.section_group_name_pt === null || aux.section_group_name_en === '' || aux.section_group_name_es === '' || aux.section_group_name_pt === '')  && {'color':'red'}">{{aux.section_group_name_en}}</td>
+                            <td ng-style="(aux.duplicated === 1 || aux.content_changed === 1 || aux.section_group_name_en === null || aux.section_group_name_es === null || aux.section_group_name_pt === null || aux.section_group_name_en === '' || aux.section_group_name_es === '' || aux.section_group_name_pt === '')  && {'color':'red'}">{{aux.section_group_name_es}}</td>
+                            <td>{{aux.lock}}</td>
+                            <td>
+                                <md-button class="edit-button md-icon-button" 
+                                        ng-click="vm.gotoDetail(aux.section_group_id)" aria-label="Collection details"
+                                        translate translate-attr-aria-label="EC.PRODUCT_DETAILS">
+                                    <md-icon md-font-icon="icon-pencil" ng-style="(aux.duplicated === 1 || aux.content_changed === 1 || aux.section_group_name_en === null || aux.section_group_name_es === null || aux.section_group_name_pt === null || aux.section_group_name_en === '' || aux.section_group_name_es === '' || aux.section_group_name_pt === '')  && {'color':'red'}" class="s16"></md-icon>
+                                </md-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

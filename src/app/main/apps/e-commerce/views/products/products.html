@@ -1,0 +1,120 @@
+<div id="e-commerce-products" class="page-layout carded fullwidth" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center" layout="column" flex>
+
+        <!-- CONTENT HEADER -->
+        <div class="header" layout="row" layout-align="space-between center">
+            <div class="white-fg" layout="column" layout-align="start start">
+                <div class="h1" layout="row" layout-align="start center">
+                    <md-icon md-font-icon="icon-cube-outline"></md-icon>
+                    <span translate="EC.PRODUCTS">Cores</span>
+                </div>
+                <div class="product-count secondary-text">
+                    <span translate="EC.TOTAL_PRODUCTS">Total cores:</span>
+                    <span>{{vm.products.length}}</span>
+                </div>
+            </div>
+
+            <div class="search" layout="row" layout-align="start center" flex>
+                <md-icon md-font-icon="icon-magnify" class="white-text icon search-icon"></md-icon>
+                <input id="e-commerce-products-search" class="search-input" type="text" placeholder="Search"
+                       translate translate-attr-placeholder="EC.SEARCH" flex>
+            </div>
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+
+            <!-- CONTENT TOOLBAR -->
+
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            <div class="content fullpage-datatable" layout="column" flex>
+
+                <table class="dataTable row-border hover" datatable="ng" dt-instance="vm.dtInstance"
+                       dt-options="vm.dtOptions">
+                    <thead>
+                        <tr>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">ID</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Image</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Name</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Color</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Collection</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Line</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Family</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Error</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Actions</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in ::vm.products">
+                            <td ng-style="(product.image === '' || product.name === '' || product.has_error === 1 )  && {'color':'red'}">{{product.sku}}</td>
+                            <td><img class="product-image" ng-src="{{product.image}}"></td>
+                            <td ng-style="(product.image === '' || product.name === '' || product.has_error === 1 )  && {'color':'red'}">{{product.name}}</td>
+                            <td ng-style="(product.image === '' || product.name === '' || product.has_error === 1 )  && {'color':'red'}">{{product.color_name}}</td>
+                            <td ng-style="(product.image === '' || product.name === '' || product.has_error === 1 )  && {'color':'red'}">{{product.collection_name}}</td>
+                            <td ng-style="(product.image === '' || product.name === '' || product.has_error === 1 )  && {'color':'red'}">{{product.line_name}}</td>
+                            <td ng-style="(product.image === '' || product.name === '' || product.has_error === 1 )  && {'color':'red'}">{{product.family_name}}</td>
+                            <td>{{product.has_error}}</td>
+                            <td>
+                                <md-button class="edit-button md-icon-button" ng-click="vm.gotoProductDetail(product.sku)" aria-label="Product details" translate translate-attr-aria-label="EC.PRODUCT_DETAILS">
+                                    <md-icon ng-style="(product.image === '' || product.name === '' || product.has_error === 1 )  && {'color':'red'}" md-font-icon="icon-pencil" class="s16"></md-icon>
+                                </md-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>
